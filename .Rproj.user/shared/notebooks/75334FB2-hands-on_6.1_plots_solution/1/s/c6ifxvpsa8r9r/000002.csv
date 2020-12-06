@@ -1,0 +1,8 @@
+"0","dataplot +"
+"0","  scale_colour_manual(name=NULL,"
+"0","                      breaks=c(""Canada"", ""British Columbia""),"
+"0","                      labels=c(""Canada"", ""British Columbia""), "
+"0","                      # define the colours using hex codes"
+"0","                      values=c(""#325A80"", ""#CCB550""))"
+"2","Erro: objeto 'dataplot' não encontrado
+"

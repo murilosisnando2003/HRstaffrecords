@@ -1,0 +1,4 @@
+"0","HR <- inner_join(HR_main, HR_transaction, key = ""emp_id"")"
+"2","Joining, by = ""emp_id""
+"
+"0","HR"

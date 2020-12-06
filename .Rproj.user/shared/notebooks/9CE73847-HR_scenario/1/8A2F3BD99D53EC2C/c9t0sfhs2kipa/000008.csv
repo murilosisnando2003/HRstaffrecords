@@ -1,0 +1,9 @@
+"0",""
+"0","HR <- inner_join(HR_main, HR_transaction, key = ""emp_id"")%>%"
+"0","filter(!is.na(occupation),transaction_num == ""start_date"")%>%"
+"0","  filter(equity_woman == ""TRUE"" | equity_visible_minority== ""TRUE"" | equity_aboriginal== ""TRUE"" | equity_disability== ""TRUE"")%>%"
+"0","  group_by(`occupation`)%>%"
+"0","   summarise(count=n())"
+"2","Error in inner_join(HR_main, HR_transaction, key = ""emp_id"") %>% filter(!is.na(occupation),  : 
+  não foi possível encontrar a função ""%>%""
+"

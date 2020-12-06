@@ -1,0 +1,12 @@
+"0","library(tidyverse)"
+"0",""
+"0","library(scales)     # extending {ggplot2}"
+"0",""
+"0","library(lubridate)"
+"0",""
+"0","library (janitor)"
+"0",""
+"0","library(CGPfunctions)"
+"2","Error in library(CGPfunctions) : 
+  there is no package called ‘CGPfunctions’
+"

@@ -1,0 +1,27 @@
+"0",""
+"0","HR_main <- read_csv(""df_HR_main.csv"")"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m-----------------------------------------------------------------------------------------------[39m
+cols(
+  emp_id = [31mcol_character()[39m,
+  start_date = [34mcol_date(format = """")[39m,
+  equity_woman = [33mcol_logical()[39m,
+  equity_visible_minority = [33mcol_logical()[39m,
+  equity_aboriginal = [33mcol_logical()[39m,
+  equity_disability = [33mcol_logical()[39m
+)
+
+"
+"0","HR_transaction <- read_csv(""df_HR_transaction.csv"")"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m-----------------------------------------------------------------------------------------------[39m
+cols(
+  emp_id = [31mcol_character()[39m,
+  transaction_num = [31mcol_character()[39m,
+  transaction_date = [34mcol_date(format = """")[39m,
+  occupation = [31mcol_character()[39m,
+  occ_step = [32mcol_double()[39m
+)
+
+"
+"0","HR_main"

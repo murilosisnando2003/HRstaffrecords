@@ -1,0 +1,264 @@
+---
+title: 'HR data: staff records'
+author: "Murilo Henrique Sisnando Rodrigues"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+## The scenario: 
+
+The fictional wholesale company, CR25 (for "Classic Rock 25"), currently has 999 employees. 
+
+### employee characteristics
+
+The CSV file "df_HR_main.csv" contains the following variables:
+
+* emp_id -- a unique identification number for each employee
+
+* start_date -- the date the employee started their employment with CR25
+
+* four variables based on the designated groups specified in Canada's [_Employment Equity Act_](https://laws-lois.justice.gc.ca/eng/acts/E-5.401/), where "TRUE" indicates the the employee is a member of that group
+
+  - women
+  
+  - Aboriginal peoples
+  
+  - persons with disabilities
+  
+  - members of visible minorities (meaning "persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour").
+
+### transaction history
+
+Some of the employees in this company have been with the company since it started on 2010-01-01, and others started recently.
+
+There are 5 occupations in the company, labelled A (for Apprentice) to E (for Executive), and each has more responsibility (and therefore pay) than the one below. Employees can start at any one of the occupations, and are eligible for a promotion after 90 days on the job (but some people take longer than that). 
+
+Each occupation has 3 steps (numbered 1 to 3); everyone starts at step 1, and moves to step 2 after 1 year in that occupation, and step 3 after 2 years. 
+
+The second CSV file "df_HR_transaction.csv" contains the promotion history for each employee. The variables are:
+
+* emp_id -- a unique identification number for each employee
+
+* transaction_num -- the hiring and promotion event categories
+
+* transaction_date -- the date of the hiring and promotion event
+
+* occupation -- the five occupation categories
+
+* occ_step -- the annual increment steps
+
+
+### Your taks
+
+You work in the human resources department, and need to make a summary for the company's annual meeting. You will need to present tables and charts showing the hiring and promotion of staff within the occupational categories. To do this you will present summaries of the data with plots and tables.
+
+
+
+### Project Starts here:
+
+
+#### 1. Loading Libraries
+```{r}
+library(tidyverse)
+
+library(dplyr)
+
+library(scales) 
+
+library(lubridate)
+
+library (janitor)
+
+library(gganimate)
+
+
+library(vtree)
+
+```
+#### 2. Importing data: csv
+
+```{r}
+
+HR_main <- read_csv("df_HR_main.csv")
+
+HR_transaction <- read_csv("df_HR_transaction.csv")
+
+HR_main
+
+HR_transaction
+
+```
+***Use `distinct` to check that `HR_main$emp_id` is a primary key***
+
+```{r}
+
+HR_main %>%
+  distinct(HR_main$emp_id)
+
+```
+
+***Use `distinct` to check that `HR_transaction$emp_id` is a primary key***
+
+```{r}
+
+HR_transaction %>%
+  distinct(HR_transaction$emp_id)
+
+```
+
+***Using Lubridate to create a month/year column***
+
+```{r}
+HR_main <- HR_main %>%
+  mutate(
+    Month_Yr = format_ISO8601(start_date, precision = "ym"),
+    Year = format_ISO8601(start_date, precision = "y")
+    
+  )
+
+HR_main
+
+```
+
+
+***Visualize - a draft plot***
+```{r}
+HR_main %>%
+   group_by(`Year`)%>%
+   summarise(count=n())%>%
+   ggplot(aes(x=Year, y=count, colour=count)) + 
+   geom_line(aes(group=1)) + geom_point() + theme_bw() +
+   theme(
+    panel.border = element_rect(colour="white"),
+    plot.title = element_text(face="bold"),
+    axis.line = element_line(colour="black"),
+    axis.title = element_text(size=12),
+    axis.text = element_text(size=12)
+   )+
+  labs(title = "Quantity of New Employees by Year",x= "Year", y= "Quantity of Employees")
+ 
+
+  
+```
+
+***Visualize - a draft plot***
+
+```{r}
+theme_set(theme_bw())
+
+HR <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+  filter(!is.na(occupation))%>%
+   group_by(`occupation`)%>%
+   summarise(count=n())%>%
+   # Draw plot
+  ggplot( aes(x=occupation, y=count)) + 
+  geom_bar(stat="identity", width=.5, fill="tomato3") + 
+  labs(title="Occupation Vs Employees - 2010 to 2020", 
+       subtitle="Classic Rock 25 Company ", 
+       caption="source: HR Data from 2010 to 2020 ",
+       x = "Occupation", y = "Qty. Employees" ) + 
+  theme(axis.text.x = element_text(angle=65, vjust=0.6))
+  
+HR
+
+```
+
+
+```{r}
+theme_set(theme_bw())
+
+HR <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+filter(!is.na(occupation),transaction_num == "start_date",Year==2020)%>%
+   group_by(`occupation`)%>%
+   summarise(count=n())%>%
+   # Draw plot
+  ggplot( aes(x=occupation, y=count)) + 
+  geom_bar(stat="identity", width=.5, fill="blue") + 
+  labs(title="New Employees by Occupation - 2020 ", 
+       subtitle="Occupation Vs Qty.Employees ", 
+       caption="source: HR Data ",
+       x = "Occupation", y = "Qty. Employees" ) + 
+  theme(axis.text.x = element_text(angle=65, vjust=0.6))
+  
+HR
+
+```
+```{r}
+
+theme_set(theme_bw())
+
+HR <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+filter(!is.na(occupation),transaction_num == "start_date",Year==2020)%>%
+  filter(equity_woman == "TRUE" | equity_visible_minority== "TRUE" | equity_aboriginal== "TRUE" | equity_disability== "TRUE")%>%
+   group_by(`occupation`)%>%
+   summarise(count=n())%>%
+   # Draw plot
+  ggplot( aes(x=occupation, y=count)) + 
+  geom_point(aes(col=occupation, size=count)) +
+  labs(title="New Employees by Occupation - Equity ", 
+       subtitle="Occupation Vs Qty.Employees ", 
+       caption="source: HR Data ",
+       x = "Occupation", y = "Qty. Employees" ) + 
+  theme(axis.text.x = element_text(angle=65, vjust=0.6))
+  
+HR
+
+
+```
+
+***Percentage of New Equity employees by year***
+
+
+```{r}
+
+HR2 <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+filter(!is.na(occupation),transaction_num == "start_date")%>%
+  filter(equity_woman == "TRUE" | equity_visible_minority== "TRUE" | equity_aboriginal== "TRUE" | equity_disability== "TRUE")%>%
+  tabyl(Year, occupation)%>%
+  adorn_percentages("col") %>%
+  adorn_pct_formatting()
+HR2
+
+```
+***Quantity o promotions by Occupation***
+```{r}
+
+
+
+HR3 <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+filter(!is.na(occupation) & !is.na(transaction_date))%>%
+filter(transaction_num == "trans1" | transaction_num == "trans1")%>%
+  group_by(`occupation`)%>%
+   summarise(count=n())%>%
+   # Draw plot
+  ggplot(aes(x=occupation, y=count, colour=occupation)) + 
+   geom_line(aes(group=1)) + geom_point() + theme_bw() +
+   theme(
+    panel.border = element_rect(colour="white"),
+    plot.title = element_text(face="bold"),
+    axis.line = element_line(colour="black"),
+    axis.title = element_text(size=12),
+    axis.text = element_text(size=12)
+   )+
+  labs(title = "Quantity of Promotions x Occupation",x= "Occupation", y= "Quantity of Promotions")
+ 
+HR3
+
+
+```
+
+***Quantity of promotions per year***
+```{r}
+
+HR3 <- inner_join(HR_main, HR_transaction, key = "emp_id")%>%
+filter(!is.na(occupation) & !is.na(transaction_date))%>%
+filter(transaction_num == "trans1" | transaction_num == "trans1")%>%
+  tabyl(Year, occupation)
+HR3
+
+
+```
+
+

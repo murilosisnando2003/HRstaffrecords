@@ -1,0 +1,6 @@
+"0",""
+"0","lm(occupation ~ Year, data=HR)"
+"2","NAs introduzidos por coerção"
+"2","Error in lm.fit(x, y, offset = offset, singular.ok = singular.ok, ...) : 
+  NA/NaN/Inf in 'y'
+"

@@ -1,0 +1,8 @@
+"0","# solution"
+"0","court_cases %>%"
+"0","  filter(Year == 2018) %>%"
+"0","  group_by(`Court Region`) %>%"
+"0","  summarise(total_cases = sum(Count)) %>%"
+"0","  arrange(desc(total_cases))"
+"2","`summarise()` ungrouping output (override with `.groups` argument)
+"

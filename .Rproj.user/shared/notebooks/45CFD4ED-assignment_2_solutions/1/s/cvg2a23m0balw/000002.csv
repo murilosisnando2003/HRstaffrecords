@@ -1,0 +1,15 @@
+"0","# solution"
+"0","court_cases <- read_csv(""cy-concluded-cases-5-yr-regional-report-dashboard-2014-to-2018.csv"")"
+"2","
+[36m--[39m [1m[1mColumn specification[1m[22m [36m-----------------------------------------------------------------------------------------------[39m
+cols(
+  Year = [32mcol_double()[39m,
+  `Court Region Code` = [32mcol_double()[39m,
+  `Court Region` = [31mcol_character()[39m,
+  `Court Level` = [31mcol_character()[39m,
+  `Court Division` = [31mcol_character()[39m,
+  `Court Class` = [31mcol_character()[39m,
+  Count = [32mcol_double()[39m
+)
+
+"

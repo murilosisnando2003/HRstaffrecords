@@ -1,0 +1,706 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={HR data: staff records},
+  pdfauthor={Murilo Henrique Sisnando Rodrigues},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{HR data: staff records}
+\author{Murilo Henrique Sisnando Rodrigues}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{the-scenario}{%
+\subsection{The scenario:}\label{the-scenario}}
+
+The fictional wholesale company, CR25 (for ``Classic Rock 25''),
+currently has 999 employees.
+
+\hypertarget{employee-characteristics}{%
+\subsubsection{employee
+characteristics}\label{employee-characteristics}}
+
+The CSV file ``df\_HR\_main.csv'' contains the following variables:
+
+\begin{itemize}
+\item
+  emp\_id -- a unique identification number for each employee
+\item
+  start\_date -- the date the employee started their employment with
+  CR25
+\item
+  four variables based on the designated groups specified in Canada's
+  \href{https://laws-lois.justice.gc.ca/eng/acts/E-5.401/}{\emph{Employment
+  Equity Act}}, where ``TRUE'' indicates the the employee is a member of
+  that group
+
+  \begin{itemize}
+  \item
+    women
+  \item
+    Aboriginal peoples
+  \item
+    persons with disabilities
+  \item
+    members of visible minorities (meaning ``persons, other than
+    Aboriginal peoples, who are non-Caucasian in race or non-white in
+    colour'').
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{transaction-history}{%
+\subsubsection{transaction history}\label{transaction-history}}
+
+Some of the employees in this company have been with the company since
+it started on 2010-01-01, and others started recently.
+
+There are 5 occupations in the company, labelled A (for Apprentice) to E
+(for Executive), and each has more responsibility (and therefore pay)
+than the one below. Employees can start at any one of the occupations,
+and are eligible for a promotion after 90 days on the job (but some
+people take longer than that).
+
+Each occupation has 3 steps (numbered 1 to 3); everyone starts at step
+1, and moves to step 2 after 1 year in that occupation, and step 3 after
+2 years.
+
+The second CSV file ``df\_HR\_transaction.csv'' contains the promotion
+history for each employee. The variables are:
+
+\begin{itemize}
+\item
+  emp\_id -- a unique identification number for each employee
+\item
+  transaction\_num -- the hiring and promotion event categories
+\item
+  transaction\_date -- the date of the hiring and promotion event
+\item
+  occupation -- the five occupation categories
+\item
+  occ\_step -- the annual increment steps
+\end{itemize}
+
+\hypertarget{your-taks}{%
+\subsubsection{Your taks}\label{your-taks}}
+
+You work in the human resources department, and need to make a summary
+for the company's annual meeting. You will need to present tables and
+charts showing the hiring and promotion of staff within the occupational
+categories. To do this you will present summaries of the data with plots
+and tables.
+
+\hypertarget{project-starts-here}{%
+\subsubsection{Project Starts here:}\label{project-starts-here}}
+
+\hypertarget{loading-libraries}{%
+\paragraph{1. Loading Libraries}\label{loading-libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(dplyr)}
+
+\KeywordTok{library}\NormalTok{(scales) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'scales'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     discard
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:readr':
+## 
+##     col_factor
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'lubridate'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     date, intersect, setdiff, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{ (janitor)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'janitor'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     chisq.test, fisher.test
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(gganimate)}
+
+
+\KeywordTok{library}\NormalTok{(vtree)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{importing-data-csv}{%
+\paragraph{2. Importing data: csv}\label{importing-data-csv}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_main \textless{}{-}}\StringTok{ }\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"df\_HR\_main.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   emp_id = col_character(),
+##   start_date = col_date(format = ""),
+##   equity_woman = col_logical(),
+##   equity_visible_minority = col_logical(),
+##   equity_aboriginal = col_logical(),
+##   equity_disability = col_logical()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_transaction \textless{}{-}}\StringTok{ }\KeywordTok{read\_csv}\NormalTok{(}\StringTok{"df\_HR\_transaction.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   emp_id = col_character(),
+##   transaction_num = col_character(),
+##   transaction_date = col_date(format = ""),
+##   occupation = col_character(),
+##   occ_step = col_double()
+## )
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_main}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 999 x 6
+##    emp_id start_date equity_woman equity_visible_~ equity_aborigin~
+##    <chr>  <date>     <lgl>        <lgl>            <lgl>           
+##  1 ID001  2010-01-02 TRUE         FALSE            FALSE           
+##  2 ID002  2010-01-03 TRUE         TRUE             TRUE            
+##  3 ID003  2010-01-08 FALSE        FALSE            TRUE            
+##  4 ID004  2010-01-10 TRUE         TRUE             FALSE           
+##  5 ID005  2010-01-16 TRUE         FALSE            FALSE           
+##  6 ID006  2010-01-17 TRUE         FALSE            FALSE           
+##  7 ID007  2010-01-21 TRUE         FALSE            FALSE           
+##  8 ID008  2010-01-25 FALSE        FALSE            FALSE           
+##  9 ID009  2010-01-27 TRUE         FALSE            FALSE           
+## 10 ID010  2010-01-30 TRUE         FALSE            FALSE           
+## # ... with 989 more rows, and 1 more variable: equity_disability <lgl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_transaction}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2,997 x 5
+##    emp_id transaction_num transaction_date occupation occ_step
+##    <chr>  <chr>           <date>           <chr>         <dbl>
+##  1 ID001  start_date      2010-01-02       D                 3
+##  2 ID001  trans1          2019-12-20       E                 1
+##  3 ID001  trans2          NA               <NA>             NA
+##  4 ID002  start_date      2010-01-03       C                 3
+##  5 ID002  trans1          2020-03-18       D                 1
+##  6 ID002  trans2          2020-10-16       E                 1
+##  7 ID003  start_date      2010-01-08       A                 3
+##  8 ID003  trans1          2013-02-18       B                 1
+##  9 ID003  trans2          2013-08-15       C                 3
+## 10 ID004  start_date      2010-01-10       B                 3
+## # ... with 2,987 more rows
+\end{verbatim}
+
+\textbf{\emph{Use \texttt{distinct} to check that
+\texttt{HR\_main\$emp\_id} is a primary key}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_main }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{(HR\_main}\OperatorTok{$}\NormalTok{emp\_id)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 999 x 1
+##    `HR_main$emp_id`
+##    <chr>           
+##  1 ID001           
+##  2 ID002           
+##  3 ID003           
+##  4 ID004           
+##  5 ID005           
+##  6 ID006           
+##  7 ID007           
+##  8 ID008           
+##  9 ID009           
+## 10 ID010           
+## # ... with 989 more rows
+\end{verbatim}
+
+\textbf{\emph{Use \texttt{distinct} to check that
+\texttt{HR\_transaction\$emp\_id} is a primary key}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_transaction }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{distinct}\NormalTok{(HR\_transaction}\OperatorTok{$}\NormalTok{emp\_id)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 999 x 1
+##    `HR_transaction$emp_id`
+##    <chr>                  
+##  1 ID001                  
+##  2 ID002                  
+##  3 ID003                  
+##  4 ID004                  
+##  5 ID005                  
+##  6 ID006                  
+##  7 ID007                  
+##  8 ID008                  
+##  9 ID009                  
+## 10 ID010                  
+## # ... with 989 more rows
+\end{verbatim}
+
+\textbf{\emph{Using Lubridate to create a month/year column}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_main \textless{}{-}}\StringTok{ }\NormalTok{HR\_main }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}
+    \DataTypeTok{Month\_Yr =} \KeywordTok{format\_ISO8601}\NormalTok{(start\_date, }\DataTypeTok{precision =} \StringTok{"ym"}\NormalTok{),}
+    \DataTypeTok{Year =} \KeywordTok{format\_ISO8601}\NormalTok{(start\_date, }\DataTypeTok{precision =} \StringTok{"y"}\NormalTok{)}
+    
+\NormalTok{  )}
+
+\NormalTok{HR\_main}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 999 x 8
+##    emp_id start_date equity_woman equity_visible_~ equity_aborigin~
+##    <chr>  <date>     <lgl>        <lgl>            <lgl>           
+##  1 ID001  2010-01-02 TRUE         FALSE            FALSE           
+##  2 ID002  2010-01-03 TRUE         TRUE             TRUE            
+##  3 ID003  2010-01-08 FALSE        FALSE            TRUE            
+##  4 ID004  2010-01-10 TRUE         TRUE             FALSE           
+##  5 ID005  2010-01-16 TRUE         FALSE            FALSE           
+##  6 ID006  2010-01-17 TRUE         FALSE            FALSE           
+##  7 ID007  2010-01-21 TRUE         FALSE            FALSE           
+##  8 ID008  2010-01-25 FALSE        FALSE            FALSE           
+##  9 ID009  2010-01-27 TRUE         FALSE            FALSE           
+## 10 ID010  2010-01-30 TRUE         FALSE            FALSE           
+## # ... with 989 more rows, and 3 more variables: equity_disability <lgl>,
+## #   Month_Yr <chr>, Year <chr>
+\end{verbatim}
+
+\textbf{\emph{Visualize - a draft plot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR\_main }\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{Year}\StringTok{\textasciigrave{}}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count=}\KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Year, }\DataTypeTok{y=}\NormalTok{count, }\DataTypeTok{colour=}\NormalTok{count)) }\OperatorTok{+}\StringTok{ }
+\StringTok{   }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group=}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme\_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{   }\KeywordTok{theme}\NormalTok{(}
+    \DataTypeTok{panel.border =} \KeywordTok{element\_rect}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"white"}\NormalTok{),}
+    \DataTypeTok{plot.title =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{face=}\StringTok{"bold"}\NormalTok{),}
+    \DataTypeTok{axis.line =} \KeywordTok{element\_line}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{),}
+    \DataTypeTok{axis.title =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{),}
+    \DataTypeTok{axis.text =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)}
+\NormalTok{   )}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Quantity of New Employees by Year"}\NormalTok{,}\DataTypeTok{x=} \StringTok{"Year"}\NormalTok{, }\DataTypeTok{y=} \StringTok{"Quantity of Employees"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\includegraphics{HR_scenario_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\textbf{\emph{Visualize - a draft plot}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{theme\_set}\NormalTok{(}\KeywordTok{theme\_bw}\NormalTok{())}
+
+\NormalTok{HR \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation))}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{occupation}\StringTok{\textasciigrave{}}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count=}\KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\CommentTok{\# Draw plot}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{occupation, }\DataTypeTok{y=}\NormalTok{count)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{width=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"tomato3"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Occupation Vs Employees {-} 2010 to 2020"}\NormalTok{, }
+       \DataTypeTok{subtitle=}\StringTok{"Classic Rock 25 Company "}\NormalTok{, }
+       \DataTypeTok{caption=}\StringTok{"source: HR Data from 2010 to 2020 "}\NormalTok{,}
+       \DataTypeTok{x =} \StringTok{"Occupation"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Qty. Employees"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{angle=}\DecValTok{65}\NormalTok{, }\DataTypeTok{vjust=}\FloatTok{0.6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HR_scenario_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{theme\_set}\NormalTok{(}\KeywordTok{theme\_bw}\NormalTok{())}
+
+\NormalTok{HR \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation),transaction\_num }\OperatorTok{==}\StringTok{ "start\_date"}\NormalTok{,Year}\OperatorTok{==}\DecValTok{2020}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{occupation}\StringTok{\textasciigrave{}}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count=}\KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\CommentTok{\# Draw plot}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{occupation, }\DataTypeTok{y=}\NormalTok{count)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{width=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"New Employees by Occupation {-} 2020 "}\NormalTok{, }
+       \DataTypeTok{subtitle=}\StringTok{"Occupation Vs Qty.Employees "}\NormalTok{, }
+       \DataTypeTok{caption=}\StringTok{"source: HR Data "}\NormalTok{,}
+       \DataTypeTok{x =} \StringTok{"Occupation"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Qty. Employees"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{angle=}\DecValTok{65}\NormalTok{, }\DataTypeTok{vjust=}\FloatTok{0.6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HR_scenario_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{theme\_set}\NormalTok{(}\KeywordTok{theme\_bw}\NormalTok{())}
+
+\NormalTok{HR \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation),transaction\_num }\OperatorTok{==}\StringTok{ "start\_date"}\NormalTok{,Year}\OperatorTok{==}\DecValTok{2020}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(equity\_woman }\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_visible\_minority}\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_aboriginal}\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_disability}\OperatorTok{==}\StringTok{ "TRUE"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{occupation}\StringTok{\textasciigrave{}}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count=}\KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\CommentTok{\# Draw plot}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{( }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{occupation, }\DataTypeTok{y=}\NormalTok{count)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col=}\NormalTok{occupation, }\DataTypeTok{size=}\NormalTok{count)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"New Employees by Occupation {-} Equity "}\NormalTok{, }
+       \DataTypeTok{subtitle=}\StringTok{"Occupation Vs Qty.Employees "}\NormalTok{, }
+       \DataTypeTok{caption=}\StringTok{"source: HR Data "}\NormalTok{,}
+       \DataTypeTok{x =} \StringTok{"Occupation"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"Qty. Employees"}\NormalTok{ ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{angle=}\DecValTok{65}\NormalTok{, }\DataTypeTok{vjust=}\FloatTok{0.6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HR_scenario_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\textbf{\emph{Percentage of New Equity employees by year}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR2 \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation),transaction\_num }\OperatorTok{==}\StringTok{ "start\_date"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{filter}\NormalTok{(equity\_woman }\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_visible\_minority}\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_aboriginal}\OperatorTok{==}\StringTok{ "TRUE"} \OperatorTok{|}\StringTok{ }\NormalTok{equity\_disability}\OperatorTok{==}\StringTok{ "TRUE"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{tabyl}\NormalTok{(Year, occupation)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{adorn\_percentages}\NormalTok{(}\StringTok{"col"}\NormalTok{) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{adorn\_pct\_formatting}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Year     A     B     C     D     E
+##  2010 11.1%  7.6% 11.1%  2.2%  5.9%
+##  2011 12.0% 12.7%  8.5%  8.7%  5.9%
+##  2012  6.2% 11.7%  9.8%  0.0%  0.0%
+##  2013 12.5%  9.1% 10.6%  6.5%  5.9%
+##  2014  8.7%  9.6%  9.4%  4.3%  0.0%
+##  2015 12.5%  7.6%  5.1%  6.5%  5.9%
+##  2016  7.2% 10.2% 10.6% 10.9%  0.0%
+##  2017 11.5% 10.7%  8.9% 19.6%  0.0%
+##  2018  6.7% 10.2% 12.8% 15.2%  5.9%
+##  2019  7.2%  5.1%  8.5% 15.2% 29.4%
+##  2020  4.3%  5.6%  4.7% 10.9% 41.2%
+\end{verbatim}
+
+\textbf{\emph{Quantity o promotions by Occupation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR3 \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation) }\OperatorTok{\&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(transaction\_date))}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(transaction\_num }\OperatorTok{==}\StringTok{ "trans1"} \OperatorTok{|}\StringTok{ }\NormalTok{transaction\_num }\OperatorTok{==}\StringTok{ "trans1"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\DataTypeTok{occupation}\StringTok{\textasciigrave{}}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count=}\KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}
+\StringTok{   }\CommentTok{\# Draw plot}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{occupation, }\DataTypeTok{y=}\NormalTok{count, }\DataTypeTok{colour=}\NormalTok{occupation)) }\OperatorTok{+}\StringTok{ }
+\StringTok{   }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{group=}\DecValTok{1}\NormalTok{)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{theme\_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{   }\KeywordTok{theme}\NormalTok{(}
+    \DataTypeTok{panel.border =} \KeywordTok{element\_rect}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"white"}\NormalTok{),}
+    \DataTypeTok{plot.title =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{face=}\StringTok{"bold"}\NormalTok{),}
+    \DataTypeTok{axis.line =} \KeywordTok{element\_line}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{),}
+    \DataTypeTok{axis.title =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{),}
+    \DataTypeTok{axis.text =} \KeywordTok{element\_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)}
+\NormalTok{   )}\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Quantity of Promotions x Occupation"}\NormalTok{,}\DataTypeTok{x=} \StringTok{"Occupation"}\NormalTok{, }\DataTypeTok{y=} \StringTok{"Quantity of Promotions"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR3}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{HR_scenario_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\textbf{\emph{Quantity of promotions per year}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR3 \textless{}{-}}\StringTok{ }\KeywordTok{inner\_join}\NormalTok{(HR\_main, HR\_transaction, }\DataTypeTok{key =} \StringTok{"emp\_id"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(occupation) }\OperatorTok{\&}\StringTok{ }\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(transaction\_date))}\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{filter}\NormalTok{(transaction\_num }\OperatorTok{==}\StringTok{ "trans1"} \OperatorTok{|}\StringTok{ }\NormalTok{transaction\_num }\OperatorTok{==}\StringTok{ "trans1"}\NormalTok{)}\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{tabyl}\NormalTok{(Year, occupation)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining, by = "emp_id"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HR3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Year  B  C  D E
+##  2010 33 25 31 1
+##  2011 31 27 32 4
+##  2012 29 35 30 1
+##  2013 38 29 31 3
+##  2014 27 28 28 2
+##  2015 31 26 20 3
+##  2016 22 26 30 5
+##  2017 35 22 27 9
+##  2018 22 30 31 8
+##  2019 16 13 23 9
+##  2020  8  6  9 2
+\end{verbatim}
+
+\end{document}

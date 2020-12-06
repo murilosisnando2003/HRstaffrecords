@@ -1,0 +1,6 @@
+"0","# solution"
+"0",""
+"0","dataplot <- ggplot(df_BC_Can, aes(x=ref_date, y=value, colour=geo)) + "
+"0","  geom_line(size = 1.5) "
+"0","dataplot"
+"0",""
